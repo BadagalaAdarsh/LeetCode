@@ -2,26 +2,26 @@ class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
         
-        vector<int> numberOfCoins(amount +1, INT_MAX - 1); // -1 so that in min condition intmax + 1 dont get overflow
+        vector<int> numberOfCoinsRequired(amount+1, INT_MAX);
+        
         sort(coins.begin(), coins.end());
-        numberOfCoins[0] = 0;
         
+        numberOfCoinsRequired[0] = 0;
         
-        for(int i = 1; i <= amount; i++) {
+        for(int currentAmount = 1; currentAmount <= amount; currentAmount++) {
             
-            for(int j = 0; j < coins.size(); j++) {
+            for(int coin: coins) {
                 
-                if (coins[j] > i ) {
-                    break;
+                if (currentAmount - coin < 0) break;
+                
+                if ( numberOfCoinsRequired[currentAmount - coin] != INT_MAX) {
+                    
+                    numberOfCoinsRequired[currentAmount] = min(numberOfCoinsRequired[currentAmount], numberOfCoinsRequired[currentAmount - coin] + 1);
                 }
-                
-                if ( i - coins[j] >= 0) {
-                    numberOfCoins[i] = min(numberOfCoins[i], numberOfCoins[i - coins[j]] + 1);
-                }                
             }
         }
         
-        return numberOfCoins[amount] == INT_MAX - 1 ? -1 : numberOfCoins[amount];
+        return numberOfCoinsRequired[amount] == INT_MAX ? -1 : numberOfCoinsRequired[amount];
         
     }
 };
