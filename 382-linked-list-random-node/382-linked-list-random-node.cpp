@@ -10,28 +10,34 @@
  */
 class Solution {
 public:
-    
-    vector<int> nums;
+    ListNode* headNode;
     Solution(ListNode* head) {
-        
-        while(head) {
-            nums.push_back(head->val);
-            head = head->next;
-        }
+        headNode = head;
     }
     
     int getRandom() {
+        // normal method is to push every thing into vector in constructor
+        // then get rand() % length of vector as current index return that element
+        // it needs order of n space to store all the elements in the list
         
-    int max = nums.size() -1;
-    int min = 0;
-    int range = max - min + 1;
-    int num = rand() % range + min;
-
         
-       ;
+        // reservoir sampling algorithm
         
-        return nums[num];
+        int result;
+        int length = 1; // assuming only one element in the list;
         
+        ListNode* currentNode = headNode;
+        
+        while(currentNode) {
+            
+            if(rand() % length == 0) 
+                result = currentNode->val;
+            
+            length++;
+            currentNode = currentNode->next;
+        }
+        
+        return result;
     }
 };
 
