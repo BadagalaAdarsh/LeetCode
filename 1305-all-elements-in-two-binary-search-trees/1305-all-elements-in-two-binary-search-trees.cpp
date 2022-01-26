@@ -10,53 +10,33 @@
  * };
  */
 class Solution {
-private:
-    void helper(TreeNode* root1, TreeNode* root2, priority_queue<int, vector<int> , greater<int> >& pq){
-        
-        if(root1 != NULL && root2 != NULL){
-            pq.push(root1->val);
-            pq.push(root2->val);
-            helper(root1->left, root2->left, pq);
-            helper(root1->right, root2->right, pq);
-            
-            return;
-        }
-        
-        if(root1 != NULL){
-            pq.push(root1->val);
-            helper(root1->left, NULL, pq);
-            helper(root1->right, NULL, pq);
-            
-            return;
-        }
-        
-        else if(root2 != NULL) {
-            pq.push(root2->val);
-            helper(NULL, root2->left, pq);
-            helper(NULL, root2->right, pq);
-            
-            return;
-        }
-        
-        return;
-    }
 public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        stack<TreeNode *> st1, st2;
+        vector<int> res;
         
-        priority_queue<int, vector<int>, greater<int>> pq;
-        
-        helper(root1, root2, pq);
-        
-        vector<int> answer;
-        
-        while(!pq.empty()) {
-            int number = pq.top();
-            pq.pop();
-            
-            answer.push_back(number);
-            
+        while(root1 || root2 || !st1.empty() || !st2.empty()){
+            while(root1){
+                st1.push(root1);
+                root1 = root1->left;
+            }
+            while(root2){
+                st2.push(root2);
+                root2 = root2->left;
+            }
+            if(st2.empty() || (!st1.empty() && st1.top()->val <= st2.top()->val)){
+                root1 = st1.top();
+                st1.pop();
+                res.push_back(root1->val);
+                root1 = root1->right;
+            }
+            else{
+                root2 = st2.top();
+                st2.pop();
+                res.push_back(root2->val);
+                root2 = root2->right;
+            }
         }
-        
-        return answer;
+        return res;
     }
 };
