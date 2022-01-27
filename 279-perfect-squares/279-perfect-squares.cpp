@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numSquares(int n) {
-        if (n == 0) return 1;
+        if (n == 0) return 0;
         
         while (!(n&3))
             n /= 4; /* divide out by square does not change result */
