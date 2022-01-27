@@ -22,6 +22,6 @@ public:
             }
             ans = max(ans,temp+dup);
         }
-        return ans * 1;    
+        return ans;    
     }
 };
