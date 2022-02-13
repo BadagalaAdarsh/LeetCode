@@ -7,10 +7,15 @@ private:
             return;
         }
         
+        
+        
+        // including
         temp.push_back(nums[start]);
-        function(start+1, end, nums, temp, ans);
+        function(start + 1, end, nums, temp, ans);
+        
+        // not including
         temp.pop_back();
-        function(start+1, end, nums, temp, ans);
+        function(start + 1, end, nums, temp, ans);
         
     }
     
