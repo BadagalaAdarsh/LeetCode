@@ -9,7 +9,8 @@ public:
             for(int right = left + 1; right < nums.size(); right++){
                 
                 if(nums[left] + nums[right] == target) {
-                    return {left, right};
+                   answer.push_back(left);
+                    answer.push_back(right);
                 }
             }
         }
