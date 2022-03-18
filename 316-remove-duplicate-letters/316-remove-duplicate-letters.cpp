@@ -6,15 +6,22 @@ public:
         
         for(char ch: s) dict[ch]++;
         
-        string answer = "0";
+        string answer = "";
         
         for(char ch: s) {
             dict[ch]--;
             
             if (visited[ch]) continue;
             
+            if(answer.size() == 0){
+                answer += ch;
+                visited[ch] = true;
+                continue;
+            }
+            
             while(ch < answer.back() && dict[answer.back()]){
                 visited[answer.back()] = false;
+                cout << answer.back() << " " ;
                 answer.pop_back();
             }
             
@@ -22,6 +29,6 @@ public:
             visited[ch] = true;
         }
         
-        return answer.substr(1);
+        return answer;
     }
 };
