@@ -21,7 +21,6 @@ public:
             
             while(ch < answer.back() && dict[answer.back()]){
                 visited[answer.back()] = false;
-                cout << answer.back() << " " ;
                 answer.pop_back();
             }
             
