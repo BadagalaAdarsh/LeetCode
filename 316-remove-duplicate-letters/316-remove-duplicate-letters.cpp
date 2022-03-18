@@ -1,28 +1,27 @@
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        
         vector<int> dict(256, 0);
         vector<bool> visited(256, false);
         
-        for(auto ch: s) dict[ch]++;
+        for(char ch: s) dict[ch]++;
         
-        string result = "0";
+        string answer = "0";
         
-        for(auto c: s){
-            dict[c]--;
+        for(char ch: s) {
+            dict[ch]--;
             
-            if(visited[c]) continue;
+            if (visited[ch]) continue;
             
-            while(c < result.back() && dict[result.back()]){
-                visited[result.back()] = false;
-                result.pop_back();
+            while(ch < answer.back() && dict[answer.back()]){
+                visited[answer.back()] = false;
+                answer.pop_back();
             }
             
-            result += c;
-            visited[c] = true;
+            answer += ch;
+            visited[ch] = true;
         }
         
-        return result.substr(1);
+        return answer.substr(1);
     }
 };
