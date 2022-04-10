@@ -24,6 +24,8 @@ public:
                 st.pop();
                 
                 int two = st.top();
+                st.pop();
+                st.push(two);
                 st.push(one);
                 st.push(one + two);
             }
