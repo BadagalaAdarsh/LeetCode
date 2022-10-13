@@ -11,8 +11,8 @@ public:
         
         for(int i = 0; i < trips.size(); i++) {
             
-            time.push_back({trips[i][1], trips[i][0]}); // start time and number of passengers
-            time.push_back({trips[i][2], -trips[i][0]}); // end time and minus of number of passengers as they are going to exit
+            time.push_back({trips[i][1], trips[i][0]}); 
+            time.push_back({trips[i][2], -trips[i][0]}); 
         }
         
         sort(time.begin(), time.end());
