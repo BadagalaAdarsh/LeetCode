@@ -15,7 +15,6 @@ public:
             answer[i] = answer[i-3] + answer[i-2] + answer[i-1];
         }
         
-        return answer[n];
-        
+        return answer[n];   
     }
 };
