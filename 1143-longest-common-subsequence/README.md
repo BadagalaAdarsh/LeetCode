@@ -18,7 +18,7 @@
 
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input:</strong> text1 = "abc", text2 = "abc"
+<pre><strong>Input:</strong> text1 = "abc", text2 == "abc"
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> The longest common subsequence is "abc" and its length is 3.
 </pre>
