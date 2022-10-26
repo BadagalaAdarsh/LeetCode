@@ -14,9 +14,7 @@ public:
                 }
             }
         }
-        
-
-        
+         
         return answer;
     }
 };
