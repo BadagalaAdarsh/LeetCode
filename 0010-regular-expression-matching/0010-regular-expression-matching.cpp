@@ -2,7 +2,7 @@ class Solution {
 public:
     bool isMatch(string s, string p) {
         int m = s.size(), n = p.size();
-        vector<bool> cur(n + 1, true);
+        vector<bool> cur(n + 1, false);
         for (int i = 0; i <= m; i++) {
             bool pre = cur[0];
             cur[0] = !i;
